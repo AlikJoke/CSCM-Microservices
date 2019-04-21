@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:element name="AtmActualStateStatistics">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="statistics">
+				<xsd:complexType>
+					<xsd:choice maxOccurs="unbounded">
+						<xsd:element name="statistics" type="AtmActualStateStatisticsItem" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="AtmActualStateStatisticsItem">
+		<xsd:all>
+			<xsd:element name="atmId" type="xsd:string" />
+			<xsd:element name="cashInCapacity" type="xsd:int" />
+			<xsd:element name="cashOutStatDate" type="xsd:dateTime" />
+			<xsd:element name="cashInStatDate" type="xsd:dateTime" />
+			<xsd:element name="cashInRecyclingInitial" type="xsd:int" />
+			<xsd:element name="outOfCashOutDate" type="xsd:dateTime" />
+			<xsd:element name="outOfCashInDate" type="xsd:dateTime" />
+			<xsd:element name="outOfCashOutCurrency" type="xsd:int" />
+			<xsd:element name="avgTransInHour" type="xsd:int" />
+			<xsd:element name="avgTransInDay" type="xsd:int" />
+			<xsd:element name="lastAdditionHours" type="xsd:int" />
+			<xsd:element name="lastWithdrawalHours" type="xsd:int" />
+			<xsd:element name="outOfCashInResp" type="xsd:int" />
+			<xsd:element name="outOfCashOutResp" type="xsd:int" />
+			<xsd:element name="rejectInitial" type="xsd:int" />
+			<xsd:element name="cashInInitial" type="xsd:int" />
+			<xsd:element name="currencyRemainingAlert" type="xsd:boolean" />
+			<xsd:element name="encCashInDate" type="xsd:dateTime" />
+			<xsd:element name="encCashOutDate" type="xsd:dateTime" />
+			
+			<xsd:element name="datePreviousEncashment" type="xsd:dateTime" />
+			<xsd:element name="dateFutureEncashment" type="xsd:dateTime" />
+			<xsd:element name="isApproved" type="xsd:boolean" />
+			<xsd:element name="plannedEncashmentSumm" type="xsd:int" />
+			
+			<xsd:element name="emergency" type="xsd:boolean" />
+			<xsd:element name="cashAddEncashment" type="xsd:boolean" />
+			
+			<xsd:element name="cashInRecyclingStat">
+				<xsd:complexType>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="cashInRecyclingStat" type="cashInRecyclingStatistics"
+							minOccurs="0" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="cashInStat">
+				<xsd:complexType>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="cashInStat" type="cashInStatistics"
+							minOccurs="0" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="rejectStat">
+				<xsd:complexType>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="rejectStat" type="rejectStatistics"
+							minOccurs="0" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="cashOutStat">
+				<xsd:complexType>
+					<xsd:choice maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="cashOutStat" type="cashOutStatistics"
+							minOccurs="0" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="atmState">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="OPENED" />
+						<xsd:enumeration value="CLOSED" />
+						<xsd:enumeration value="DISCONNECTED" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="atmProblem">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="CARD_READER" />
+						<xsd:enumeration value="RECEIPT_PRINTER" />
+						<xsd:enumeration value="DISPENSER" />
+						<xsd:enumeration value="BILL_ACCEPTOR" />
+						<xsd:enumeration value="JOURNAL_PRINTER" />
+						<xsd:enumeration value="IS_FULL" />
+						<xsd:enumeration value="FIREWALL" />
+						<xsd:enumeration value="NONE" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
+
+	<xsd:simpleType name="notEmptyString">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value=".*[^\s].*" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="cashInStatistics">
+		<xsd:all>
+			<xsd:element name="billsCount" type="xsd:int" />
+			<xsd:element name="billsRemaining" type="xsd:int" />
+			<xsd:element name="availableCoeff" type="xsd:double" />
+			<xsd:element name="cassValue" type="xsd:int" />
+			<xsd:element name="cassCurrency" type="xsd:int" />
+			<xsd:element name="cassCount" type="xsd:int" />
+			<xsd:element name="actionType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="BILLS_UPLOAD" />
+						<xsd:enumeration value="BILLS_UNLOAD" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="cassNumber" type="xsd:int" />
+			<xsd:element name="cassIsWorking" type="xsd:boolean" />
+			<xsd:element name="notesCount" type="xsd:int" />
+		</xsd:all>
+	</xsd:complexType>
+
+	<xsd:complexType name="cashInRecyclingStatistics">
+		<xsd:all>
+			<xsd:element name="atmId" type="notEmptyString" />
+			<xsd:element name="statDate" type="xsd:dateTime" />
+			<xsd:element name="availableCoeff" type="xsd:double" />
+			<xsd:element name="cassValue" type="xsd:int" />
+			<xsd:element name="cassCurrency" type="xsd:int" />
+			<xsd:element name="cassCountIn" type="xsd:int" />
+			<xsd:element name="cassCountOut" type="xsd:int" />
+			<xsd:element name="cassTransCountIn" type="xsd:int" />
+			<xsd:element name="cassTransCountOut" type="xsd:int" />
+			<xsd:element name="cassNumber" type="xsd:int" />
+			<xsd:element name="cassRemaining" type="xsd:int" />
+			<xsd:element name="cassIsWorking" type="xsd:boolean" />
+			<xsd:element name="notesCount" type="xsd:int" />
+		</xsd:all>
+	</xsd:complexType>
+
+	<xsd:complexType name="rejectStatistics">
+		<xsd:all>
+			<xsd:element name="atmId" type="notEmptyString" />
+			<xsd:element name="statDate" type="xsd:dateTime" />
+			<xsd:element name="billsCount" type="xsd:int" />
+			<xsd:element name="billsRemaining" type="xsd:int" />
+		</xsd:all>
+	</xsd:complexType>
+
+	<xsd:complexType name="cashOutStatistics">
+		<xsd:all>
+			<xsd:element name="atmId" type="notEmptyString" />
+			<xsd:element name="cassValue" type="xsd:int" />
+			<xsd:element name="cassCurrency" type="xsd:int" />
+			<xsd:element name="cassCount" type="xsd:int" />
+			<xsd:element name="actionType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="BILLS_UPLOAD" />
+						<xsd:enumeration value="BILLS_UNLOAD" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="cassNumber" type="xsd:int" />
+			<xsd:element name="availableCoeff" type="xsd:double" />
+			<xsd:element name="cassTransCount" type="xsd:int" />
+			<xsd:element name="cassCurrencyDemandValue" type="xsd:int" />
+			<xsd:element name="cassCurrencyExhaustionDate" type="xsd:dateTime" />
+			<xsd:element name="cassRemaining" type="xsd:int" />
+			<xsd:element name="cassIsWorking" type="xsd:boolean" />
+			<xsd:element name="notesCount" type="xsd:int" />
+		</xsd:all>
+	</xsd:complexType>
+	
+</xsd:schema>

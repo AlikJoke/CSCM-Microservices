@@ -1,0 +1,22 @@
+CREATE TABLE T_CM_ENC_CASHOUT_STAT (
+  	ATM_ID        		 	NUMERIC(9)	NOT NULL,
+  	ENC_DATE      			TIMESTAMP     			NOT NULL,
+  	ENCASHMENT_ID 		 	NUMERIC(6) 			NOT NULL,
+  	EMERGENCY_ENCASHMENT    NUMERIC(1) 		DEFAULT 0,
+  	CASH_ADD_ENCASHMENT    	NUMERIC(1) 		DEFAULT 0
+);
+
+COMMENT ON TABLE 	T_CM_ENC_CASHOUT_STAT 				IS 'This table contains loaded cash out replenishments';
+COMMENT ON COLUMN 	T_CM_ENC_CASHOUT_STAT.ATM_ID 		IS 'Unique ID identifying the ATM';
+COMMENT ON COLUMN 	T_CM_ENC_CASHOUT_STAT.ENC_DATE 		IS 'Date of cash out replenishment';
+COMMENT ON COLUMN 	T_CM_ENC_CASHOUT_STAT.ENCASHMENT_ID IS 'Internal Cash Management cash out replenishment identifier';
+COMMENT ON COLUMN 	T_CM_ENC_CASHOUT_STAT.EMERGENCY_ENCASHMENT IS 'Flag indicating whether replenishment is emergency';
+COMMENT ON COLUMN 	T_CM_ENC_CASHOUT_STAT.CASH_ADD_ENCASHMENT IS 'Flag indicating whether replenishment is with cash adding to cassettes';
+
+CREATE UNIQUE INDEX I_CM_ENC_CASHOUT_STAT_EID ON T_CM_ENC_CASHOUT_STAT (
+    encashment_id                   ASC
+);
+
+ALTER TABLE T_CM_ENC_CASHOUT_STAT ADD 
+  	CONSTRAINT PK_CM_ENC_CASHOUT_STAT PRIMARY KEY USING INDEX I_CM_ENC_CASHOUT_STAT_EID;
+

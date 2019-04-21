@@ -1,0 +1,10 @@
+CREATE TABLE T_CM_TASK_PARAM (
+  	TASK_ID  NUMERIC(4)           	NOT NULL,
+  	VALUE    VARCHAR(500),
+  	TYPE     NUMERIC(2)
+);
+
+COMMENT ON TABLE 	T_CM_TASK_PARAM 		IS 'This table contains parameters of sheduled tasks';
+COMMENT ON COLUMN 	T_CM_TASK_PARAM.TASK_ID	IS 'Task ID';
+COMMENT ON COLUMN 	T_CM_TASK_PARAM.VALUE 	IS 'Parameter value';
+COMMENT ON COLUMN 	T_CM_TASK_PARAM.TYPE 	IS 'Parameter type';

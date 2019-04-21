@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>ru.project.cscm</groupId>
+		<artifactId>cscm-monitoring</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>cscm-monitoring-war</artifactId>
+	<name>cscm-monitoring-war</name>
+	<description>WAR module for CSCM Monitoring Service</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>ru.project.cscm</groupId>
+			<artifactId>cscm-monitoring-ws</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+</project>

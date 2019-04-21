@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>ru.project.cscm</groupId>
+		<artifactId>cscm-integration</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>cscm-integration-scheduling</artifactId>
+	<name>cscm-integration-scheduling</name>
+	<description>Scheduling module for write statistics to CSCM App</description>
+	
+	<dependencies>
+		<dependency>
+			<groupId>ru.project.cscm</groupId>
+			<artifactId>cscm-integration-dao</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+
+	</dependencies>
+</project>
